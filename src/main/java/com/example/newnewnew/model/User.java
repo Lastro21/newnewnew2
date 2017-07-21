@@ -41,6 +41,7 @@ public class User {
 
 
 
+	///f
 	@Column(name = "confirm_password")
 	@NotEmpty(message = "*Поле не может быть пустым")
 	@Length(min = 3, message = "*Длина менее 3 символов")
