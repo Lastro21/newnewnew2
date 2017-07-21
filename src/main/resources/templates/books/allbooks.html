@@ -1,0 +1,541 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Registration Form</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/slider.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/for_mainpage_angular.css}" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.9/angular.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+
+
+
+    <!--  INCLUDE JS
+
+    <script th:src="@{/js/jquery-1.6.4.min.js}"></script>
+    <script th:src="@{/js/jquery-ui.min.js}"></script>
+
+    -->
+
+
+
+
+
+    <script th:src="@{/js/slider.js}"></script>
+
+    <style>
+
+        .block_books{
+            float: left;
+            width: 300px;
+            height: 200px;
+            margin: 50px;
+        }
+
+        .span_text_book{
+            float: left;
+            width: 100%;
+            padding-left: 14px;
+            padding-top: 14px;
+        }
+        .test{
+            background: gold;
+            margin-left: 50px;
+        }
+        #chahge_user_values{
+            margin: 25px;
+        }
+
+        .block_news{
+            float: left;
+            width: 300px;
+            height: 200px;
+            margin-left: 20px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+<div id="body_block" th:style="'background:'+ ${background_color}">
+    <div style="clear: left"></div>
+
+                    <br>
+                    <br>
+
+        <h1 style="margin: 50px"> Список моих книг </h1>
+
+    <div id="hide_show_change" sec:authorize="isAuthenticated()">
+
+    <div id="chahge_user_values">
+
+        <!--
+
+        <form action="/changeValuesUser" method="post" >
+
+        -->
+
+
+        <form action="/changeValuesUser" method="post">
+
+
+            <label for="background_color">Цвет фона</label>
+
+            <select name="background_color" id="background_color" style="background: chartreuse">
+
+                <p th:if="${background_color} == 'red'">
+                <option style="display: none" value="red" selected >красный</option>
+                </p>
+                <option value="red" >красный</option>
+
+                <p th:if="${background_color} == 'green'">
+                <option style="display: none" value="green" selected >зеленый</option>
+                </p>
+                <option value="green">зеленый</option>
+
+                <p th:if="${background_color} == 'blue'">
+                <option style="display: none" value="blue" selected >синий</option>
+                </p>
+                <option value="blue">синий</option>
+
+                <p th:if="${background_color} == 'yellow'">
+                <option style="display: none" value="yellow" selected >желтый</option>
+                </p>
+                <option value="yellow">желтый</option>
+
+                <p th:if="${background_color} == 'white'">
+                <option style="display: none" value="white" selected >белый</option>
+                </p>
+                <option value="white">белый</option>
+
+                <p th:if="${background_color} == 'brown'">
+                <option style="display: none" value="brown" selected >коричневый</option>
+                </p>
+                <option value="brown">коричневый</option>
+
+                <p th:if="${background_color} == 'pink'">
+                <option style="display: none" value="pink" selected >розовый</option>
+                </p>
+                <option value="pink">розовый</option>
+
+                <p th:if="${background_color} == 'orange'">
+                <option style="display: none" value="orange" selected >оранжевый</option>
+                </p>
+                <option value="orange">оранжевый</option>
+            </select>
+
+
+
+
+            <label for="background_block">Цвет блока</label>
+
+            <select name="background_block" id="background_block" style="background: chartreuse">
+
+                <p th:if="${background_block} == 'red'">
+                <option style="display: none" selected value="red"   >   красный    </option>
+                </p>
+                <option value="red">красный</option>
+
+                <p th:if="${background_block} == 'green'">
+                <option style="display: none" selected value="green"  >   зеленый    </option>
+                </p>
+                <option value="green">зеленый</option>
+
+                <p th:if="${background_block} == 'blue'">
+                <option style="display: none" selected value="blue"  >   синий      </option>
+                </p>
+                <option value="blue">синий</option>
+
+                <p th:if="${background_block} == 'yellow'">
+                <option style="display: none" selected value="yellow" >   желтый     </option>
+                </p>
+                <option value="yellow">желтый</option>
+
+                <p th:if="${background_block} == 'white'">
+                <option style="display: none" selected value="white" >   белый      </option>
+                </p>
+                <option value="white">белый</option>
+
+                <p th:if="${background_block} == 'brown'">
+                <option style="display: none" selected value="brown" >   коричневый </option>
+                </p>
+                <option value="brown">коричневый</option>
+
+                <p th:if="${background_block} == 'pink'">
+                <option style="display: none" selected value="pink"  >   розовый    </option>
+                </p>
+                <option value="pink">розовый</option>
+
+                <p th:if="${background_block} == 'orange'">
+                <option style="display: none" selected value="orange"   >   оранжевый  </option>
+                </p>
+                <option value="orange">оранжевый</option>
+
+            </select>
+
+
+
+
+            <label for="font_color">Цвет шрифта</label>
+
+            <select name="font_color" id="font_color" style="background: chartreuse">
+
+                <p th:if="${font_color} == 'red'">
+                    <option style="display: none" selected value="red"   >   красный    </option>
+                </p>
+                <option value="red">красный</option>
+
+                <p th:if="${font_color} == 'green'">
+                    <option style="display: none" selected value="green" >   зеленый    </option>
+                </p>
+                <option value="green">зеленый</option>
+
+                <p th:if="${font_color} == 'blue'">
+                    <option style="display: none" selected value="blue"  >   синий      </option>
+                </p>
+                <option value="blue">синий</option>
+
+                <p th:if="${font_color} == 'yellow'">
+                    <option style="display: none" selected value="yellow"  >   желтый     </option>
+                </p>
+                <option value="yellow">желтый</option>
+
+                <p th:if="${font_color} == 'white'">
+                    <option style="display: none" selected value="white"  >   белый      </option>
+                </p>
+                <option value="white">белый</option>
+
+                <p th:if="${font_color} == 'brown'">
+                    <option style="display: none" selected value="brown"  >   коричневый </option>
+                </p>
+                <option value="brown">коричневый</option>
+
+                <p th:if="${font_color} == 'pink'">
+                    <option style="display: none" selected value="pink"  >   розовый    </option>
+                </p>
+                <option value="pink">розовый</option>
+
+                <p th:if="${font_color} == 'orange'">
+                    <option style="display: none" selected value="orange"  >   оранжевый  </option>
+                </p>
+                <option value="orange">оранжевый</option>
+
+            </select>
+
+
+
+
+            <label for="block_widht">Ширина блока</label>
+
+            <select name="block_widht" id="block_widht" style="background: chartreuse">
+                <p th:if="${block_widht} == '100'">
+                <option style="display: none" selected  value="100" >100</option>
+                </p>
+                <option value="100">100</option>
+
+                <p th:if="${block_widht} == '200'">
+                <option style="display: none" selected  value="200" >200</option>
+                </p>
+                <option value="200">200</option>
+
+                <p th:if="${block_widht} == '300'">
+                <option style="display: none" selected  value="300" >300</option>
+                </p>
+                <option value="300">300</option>
+
+                <p th:if="${block_widht} == '400'">
+                <option style="display: none" selected  value="400" >400</option>
+                </p>
+                <option value="400">400</option>
+
+                <p th:if="${block_widht} == '500'">
+                <option style="display: none" selected  value="500" >500</option>
+                </p>
+                <option value="500">500</option>
+
+                <p th:if="${block_widht} == '600'">
+                <option style="display: none" selected  value="600" >600</option>
+                </p>
+                <option value="600">600</option>
+
+                <p th:if="${block_widht} == '700'">
+                <option style="display: none" selected  value="700" >700</option>
+                </p>
+                <option value="700">700</option>
+
+                <p th:if="${block_widht} == '800'">
+                <option style="display: none" selected  value="800" >800</option>
+                </p>
+                <option value="800">800</option>
+            </select>
+
+
+
+
+            <label for="block_height">Высота блока</label>
+
+            <select name="block_height" id="block_height" style="background: chartreuse">
+
+                <p th:if="${block_height} == '100'">
+                    <option style="display: none" selected  value="100" >100</option>
+                </p>
+                <option value="100">100</option>
+
+                <p th:if="${block_height} == '200'">
+                    <option style="display: none" selected  value="200" >200</option>
+                </p>
+                <option value="200">200</option>
+
+                <p th:if="${block_height} == '300'">
+                    <option style="display: none" selected  value="300" >300</option>
+                </p>
+                <option value="300">300</option>
+
+                <p th:if="${block_height} == '400'">
+                    <option style="display: none" selected  value="400" >400</option>
+                </p>
+                <option value="400">400</option>
+
+                <p th:if="${block_height} == '500'">
+                    <option style="display: none" selected  value="500" >500</option>
+                </p>
+                <option value="500">500</option>
+
+                <p th:if="${block_height} == '600'">
+                    <option style="display: none" selected  value="600" >600</option>
+                </p>
+                <option value="600">600</option>
+
+                <p th:if="${block_height} == '700'">
+                    <option style="display: none" selected  value="700" >700</option>
+                </p>
+                <option value="700">700</option>
+
+                <p th:if="${block_height} == '800'">
+                    <option style="display: none" selected  value="800" >800</option>
+                </p>
+                <option value="800">800</option>
+            </select>
+
+            <!--  СТАРАЯ ФОРМА БЕЗ ВЫПАДАЮЩЕГО СПИСКА
+
+             <label for="background_color">Цвет фона</label>
+             <input type="text" name="background_color" th:value="${background_color}" th:placeholder="${background_color}" id="background_color" >
+
+
+             <label for="background_block">Цвет блока</label>
+             <input type="text" name="background_block" th:value="${background_block}" th:placeholder="${background_block}" id="background_block" >
+
+             <label for="font_color">Цвет шрифта</label>
+             <input type="text" name="font_color" th:value="${font_color}" th:placeholder="${font_color}" id="font_color" >
+
+             <label for="block_widht">Ширина блока</label>
+             <input type="text" name="block_widht" th:value="${block_widht}" th:placeholder="${block_widht}" id="block_widht" >
+
+             <label for="block_height">Высота блока</label>
+             <input type="text" name="block_height" th:value="${block_height}" th:placeholder="${block_height}" id="block_height" >
+
+             -->
+
+
+
+
+            <button type="submit" > Выбрать </button>
+
+        </form>
+
+    </div>
+
+    </div>
+
+        <div style="width: 100%; float: left; border: 2px black solid"></div>
+
+            <span th:each="book : ${getArrayBooks}">
+
+
+                <div  class="block_books"
+                      th:style="'background:'+ ${background_block}+'; color:'+${font_color}+';width:'+${block_widht}+'px; height:'+${block_height}+'px;'">
+
+                    <span class="span_text_book" th:text="${book.book_name}"></span>
+                    <br>
+                    <br>
+                    <span class="span_text_book" th:text="${book.author}"></span>
+                    <br>
+                    <br>
+                    <span class="span_text_book" th:text="${book.purchase_date}"></span>
+                    <br>
+                    <br>
+
+
+            <span sec:authorize="hasAuthority('SUPER')">
+                    <br>
+                    <br>
+
+                    <a th:href="@{@{/updatebook}(id=${book.id})}" style="margin-left: 16px"> Редактировать </a>
+            </span>
+
+                    <br>
+                    <br>
+            <span sec:authorize="hasAuthority('SUPER')">
+
+                    <a th:href="@{@{/deletebook}(id=${book.id})}" style="margin-left: 16px"> Удалить </a>
+            </span>
+
+                    <br>
+
+                </div>
+
+            </span>
+
+        <!--    БЛОК ДЛЯ ДОСТУПА С ПРАВАМИ ДОСТУПА
+        <ul sec:authorize="isAnonymous()" class="nav navbar-nav navbar-right">
+            <li><a th:href="@{/login}">Login </a></li>
+            <li><a th:href="@{/register}">Sign Up</a></li>
+        </ul>
+
+        <ul sec:authorize="isAuthenticated()" class="nav navbar-nav navbar-right" >
+            <li>
+                <a th:href="@{/logout}">Log out</a>
+            </li>
+        </ul>
+        -->
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div style="clear: left"></div>
+
+        <span sec:authorize="hasAuthority('SUPER')">
+
+        <a href="/newbook" style="margin-left: 50px"> Добавить новую книгу </a>
+        </span>
+
+        <div style="clear: left"></div>
+        <br>
+        <br>
+
+
+    <a href="/login" style="margin-left: 50px"> <span th:text="${enter_to_system}" /></a>
+
+
+        <span sec:authorize="isAuthenticated()">
+
+                <a th:href="@{/logout}" style="margin-left: 50px; margin-left: 50px;">Выйти из системы</a>
+
+
+
+        </span>
+        <span sec:authorize="isAuthenticated()">
+
+                <a th:href="@{/admin/home}" style="margin-left: 50px; margin-left: 50px;">Войти в профиль</a>
+
+        </span>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
+            <div class="test" sec:authorize="isAuthenticated()" th:style="'background:'+ ${DefaultUserInformation}" >
+                Вы видите свою цветовую схему, поздравляем
+                <br>
+                <br>
+            </div>
+
+                    <br>
+                    <br>
+                                        <div ng-app='myAngularApp'>
+                                            <div ng-controller="myAngularController">
+                                                <div ng-repeat="result in arrayBooks">
+                                                    <button id="button_show_hide" ng-click="showBlock = ! showBlock">ПОКАЗАТЬ/СКРЫТЬ список книг, полученный через <span style="background: white; font-size: 21px;"> ANGULARJS </span></button>
+
+                                                    <div style="clear: left"></div>
+                                                        <br>
+
+                                                    <div ng-show="showBlock">
+                                                        <div class="block_for_show_ng" ng-repeat="open in result" >
+                                                            <br>
+                                                            <div class="showBooksInAngular" > {{open.book_name}}</div>
+                                                            <div class="showBooksInAngular" > {{open.author}}</div>
+                                                            <div class="showBooksInAngular" > {{open.purchase_date}}</div>
+                                                            <div style="clear: left"></div>
+                                                            <br>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                                    <div style="clear: left"></div>
+                                                    <br>
+</div>
+
+        <div style="clear: left"></div>
+
+
+
+<!--                     Блок новостей                  -->
+
+
+<div id='carousel_inner'>
+    <ul id='carousel_ul'>
+        <span th:each="news : ${getArrayNews}">
+        <li>
+            <div class="insideHref" align="justify"><a th:href="${news.href}" target="_blank"><span class="span_text_book" th:text="${news.title}"></span></a></div>
+            <a th:href="${news.href}" target="_blank"><img th:src="${news.image}" width="230" height="150" /></a>
+        </li>
+        </span>
+    </ul>
+</div>
+<input type='hidden' id='hidden_auto_slide_seconds' value=0 />
+
+<!--                  /       Блок новостей  -->
+
+<!--     Старый код, который просто выводит новости кучей
+
+<div class="mainBackgraundNews" style="float: left; width: 100%; background: silver;">
+
+    <span th:each="news : ${getArrayNews}">
+
+            <div class="block_news" th:style="'background:'+ ${background_block}+';'">
+
+                <br>
+                <br>
+                <a th:href="${news.href}"><span class="span_text_book" th:text="${news.title}"></span></a>
+                <br>
+                <br>
+                <img th:src="${news.image}" width="250" height="170" />
+                <br>
+                <br>
+
+            </div>
+
+    </span>
+
+
+</div>
+
+-->
+
+        <br>
+        <br>
+        <br>
+
+</body>
+
+</html>

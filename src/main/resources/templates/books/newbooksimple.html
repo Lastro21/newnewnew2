@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New book</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+
+<form action="/savebook" method="post">
+
+    <input type="hidden" name="id" value="" id="id" >
+
+
+    <input type="text" name="book_name" value="" id="book_name" >
+    <input type="text" name="author" value="" id="author">
+    <input type="text" name="purchase_date" value="" id="purchase_date">
+
+    <button type="submit"> Сохранить </button>
+</form>
+<a href="/allbooks"> Внуться к списку книг </a>
+
+
+
+
+</body>
+</html>
